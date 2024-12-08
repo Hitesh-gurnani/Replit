@@ -1,5 +1,5 @@
 import express from 'express'
-import { PORT } from '../config/serverConfig.js'
+import { PORT } from './config/serverConfig.js'
 import cors from 'cors'
 import apiRouter from './routes/index.js'
 const app = express()

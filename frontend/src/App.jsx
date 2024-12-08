@@ -6,12 +6,14 @@ import usePing from "./hooks/apis/queries/usePing";
 import PingComponent from "./components/atoms/PingComponent";
 import { Routes, Route } from "react-router-dom";
 import CreateProject from "./pages/CreateProject";
+import ProjectPlayground from "./pages/ProjectPlayground";
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<CreateProject/>}></Route>
-      </Routes>
+            <Route path="/" element={<CreateProject/>}></Route>
+            <Route path="/project/:projectId" element={<ProjectPlayground/>}></Route>
+        </Routes>
     </>
   );
 }

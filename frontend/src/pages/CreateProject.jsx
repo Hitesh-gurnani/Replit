@@ -1,22 +1,26 @@
 import React from "react";
 import { useCreateProject } from "../hooks/apis/mutation/useCreateProject";
 import { Layout, Typography, Button, Row, Col, Card } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const { Header, Footer, Content } = Layout;
 const { Title, Paragraph } = Typography;
 
 function CreateProject() {
   const { Header, Footer, Content } = Layout;
+  const navigate = useNavigate();
   const { createAsyncMutation, isPending } = useCreateProject();
   async function handleCreateProject(params) {
     console.log("going to create project");
     try {
-      await createAsyncMutation();
+      const res = await createAsyncMutation();
       console.log("project created now we cshould ");
+      navigate(`/project/${res.data}`);
     } catch {
       console.log("error");
     }
   }
+
   return (
     <Layout
       style={{
@@ -60,7 +64,7 @@ function CreateProject() {
               style={{
                 border: "2px solid #2196F3",
                 width: "100%",
-                height: "100%",
+                height: "100%", 
                 backgroundImage: "linear-gradient(135deg, #2196F3, #0D47A1)",
                 color: "white",
                 fontWeight: "bold",
