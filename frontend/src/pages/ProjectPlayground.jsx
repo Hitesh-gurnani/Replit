@@ -10,7 +10,6 @@ function ProjectPlayground() {
   const { projectId, setProjectId } = useTreeStructureStore();
 
   useEffect(() => {
-    console.log(projectIdfromUrl, "projectIdfromUrl");
     setProjectId(projectIdfromUrl);
   }, [setProjectId, projectIdfromUrl]);
 
@@ -27,12 +26,6 @@ function ProjectPlayground() {
       <main style={styles.mainContent}>
         {projectId && <EditorComponent />}
       </main>
-
-      {projectId && (
-        <div style={styles.floatingButton}>
-          <EditorButton />
-        </div>
-      )}
     </div>
   );
 }
@@ -71,6 +64,7 @@ const styles = {
     overflowY: "auto",
     backgroundColor: "#ffffff",
     boxShadow: "-2px 0 5px rgba(0, 0, 0, 0.1)",
+    minHeight: "100vh",
   },
   floatingButton: {
     position: "fixed",

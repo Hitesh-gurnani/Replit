@@ -7,7 +7,10 @@ import PingComponent from "./components/atoms/PingComponent";
 import { Routes, Route } from "react-router-dom";
 import CreateProject from "./pages/CreateProject";
 import ProjectPlayground from "./pages/ProjectPlayground";
+import { io } from "socket.io-client";
+
 function App() {
+  const socket = io("http://localhost:3000");
   return (
     <>
       <Routes>
