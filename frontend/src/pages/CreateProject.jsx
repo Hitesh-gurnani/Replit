@@ -33,6 +33,7 @@ function CreateProject() {
     return () => clearTimeout(timeout);
   }, []);
 
+  // Styles
   const layoutStyle = {
     minHeight: "100vh",
     display: "flex",
@@ -40,6 +41,20 @@ function CreateProject() {
     backgroundImage: "linear-gradient(135deg, #0f172a, #1e293b, #111827)",
     backgroundSize: "400% 400%",
     animation: "gradientAnimation 15s ease infinite",
+  };
+
+  const heroSectionStyle = {
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundImage:
+      "url('https://images.unsplash.com/photo-1558888401-29715af44827?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')", // Example background image
+    position: "relative",
+    padding: "100px 20px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    textAlign: "center",
   };
 
   const heroOverlayStyle = {
