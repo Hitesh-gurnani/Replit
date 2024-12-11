@@ -28,7 +28,7 @@ function EditorComponent() {
         width="100%"
         theme="vs-dark"
         defaultLanguage="javascript"
-        defaultValue="Welcome to playground"
+        defaultValue="//Welcome to playground"
         options={{
           fontSize: 18,
           fontFamily: "monospace",
