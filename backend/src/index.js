@@ -36,10 +36,10 @@ const editorNamespace = io.of('/editor')
 editorNamespace.on('connection', (socket) => {
   console.log('editor connected')
   // somehow we will get the projectId from frontend
-  // const queryParams = queryString.parse(socket.handshake.query)
-  let projectId = socket.handshake.query.projectId;
+  const queryParams = socket.handshake.query
+  let projectId = queryParams.projectId;
 
-  console.log("Query fron frontend", projectId)
+  console.log("Query fron frontend", queryParams)
 
   if(projectId){
     var watcher = chokidar.watch(`./projects/${projectId}`,{

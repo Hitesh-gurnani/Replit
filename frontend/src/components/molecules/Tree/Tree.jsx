@@ -2,9 +2,11 @@ import React from "react";
 import { AiFillFolder, AiFillFolderOpen } from "react-icons/ai";
 import { VscFile } from "react-icons/vsc";
 import { BsFillFileEarmarkTextFill } from "react-icons/bs";
+import { useEditorSocketStore } from "../../../store/editorSocketStore";
 
 function Tree({ fileFolderData }) {
   const [toggleVisibility, setToggleVisibility] = React.useState({});
+  const { editorSocket } = useEditorSocketStore();
 
   const toggleFolder = (path) => {
     setToggleVisibility((prevState) => ({
@@ -12,6 +14,13 @@ function Tree({ fileFolderData }) {
       [path]: !prevState[path],
     }));
   };
+
+  const handleDoubleClick = (data) => {
+    console.log("Double Clicked", data)
+    editorSocket.emit("readFile",{
+      pathToFileOrFolder: data.path
+    })
+  }
 
   const renderTree = (node) => {
     const isFolder = node?.children && node?.children.length > 0;
@@ -48,6 +57,7 @@ function Tree({ fileFolderData }) {
               alignItems: "center",
               color: "#7f8c8d",
             }}
+            onDoubleClick={() => handleDoubleClick(node)}
           >
             <BsFillFileEarmarkTextFill style={{ marginRight: 8, color: "#3498db" }} /> {node?.name}
           </div>
